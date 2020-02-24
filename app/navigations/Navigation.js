@@ -8,6 +8,7 @@ import RestaurantsScreen from "../screens/Restaurants";
 import TopRestaurantsScreen from "../screens/TopRestaurants";
 import SearchScreen from "../screens/Search";
 import MyAccountScreen from "../screens/account/MyAccount";
+import Login from '../screens/account/Login';
 
 
 
@@ -43,6 +44,8 @@ function AccountStack() {
     return (
         <Stack.Navigator>
             <Stack.Screen name="Mi cuenta" component={MyAccountScreen} />
+            <Stack.Screen name="Login" component={Login} />
+
         </Stack.Navigator>
     )
 }
