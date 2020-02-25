@@ -9,6 +9,7 @@ import TopRestaurantsScreen from "../screens/TopRestaurants";
 import SearchScreen from "../screens/Search";
 import MyAccountScreen from "../screens/account/MyAccount";
 import Login from '../screens/account/Login';
+import Register from '../screens/account/Register';
 
 
 
@@ -45,7 +46,7 @@ function AccountStack() {
         <Stack.Navigator>
             <Stack.Screen name="Mi cuenta" component={MyAccountScreen} />
             <Stack.Screen name="Login" component={Login} />
-
+            <Stack.Screen name="Registro" component={Register} />
         </Stack.Navigator>
     )
 }

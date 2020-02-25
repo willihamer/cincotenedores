@@ -1,12 +1,12 @@
 import React from 'react'
 import { StyleSheet, View, Text, ScrollView, Image, Button } from "react-native";
 import { Button } from "react-native-elements";
-import { withNavigation } from "react-navigation";
+// import { withNavigation } from "react-navigation";
 
 
-function UserGuest(props) {
+function UserGuest({ navigation }) {
 
-    const { navigation } = props;
+    // const { navigation } = props;
 
     return (
         <ScrollView style={styles.viewBody} centerContent={true}>
