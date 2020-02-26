@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, Text, ScrollView, Image, Button } from "react-native";
+import { StyleSheet, View, Text, ScrollView, Image } from "react-native";
 import { Button } from "react-native-elements";
 // import { withNavigation } from "react-navigation";
 
@@ -33,7 +33,7 @@ function UserGuest({ navigation }) {
     );
 }
 
-export default withNavigation(UserGuest);
+export default UserGuest;
 
 const styles = StyleSheet.create({
     viewBody: {
