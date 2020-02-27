@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Button } from "react-native";
+import { StyleSheet, View} from "react-native";
 import { Input, Icon, Button } from "react-native-elements";
 import { validateEmail } from '../../utils/Validation';
 
