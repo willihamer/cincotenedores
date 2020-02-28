@@ -45,8 +45,8 @@ function AccountStack() {
     return (
         <Stack.Navigator>
             <Stack.Screen name="Mi cuenta" component={MyAccountScreen} />
-            <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Registro" component={Register} />
+            <Stack.Screen name="Login" component={Login} />
         </Stack.Navigator>
     )
 }

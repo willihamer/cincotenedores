@@ -1,36 +1,46 @@
 import React, { useState } from 'react';
-import { StyleSheet, View} from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Input, Icon, Button } from "react-native-elements";
 import { validateEmail } from '../../utils/Validation';
+import * as firebase from 'firebase';
+import Loading from '../../components/Loading';
 
-export default function RegisterForm() {
+export default function RegisterForm(props, {navigation}) {
+
+    const { toastRef } = props;
 
     const [hidePass, setHidePass] = useState(true);
     const [hidePassRepeat, setHidePassRepeat] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [repeatPass, setRepeatPass] = useState('');
+    const [isVisibleLoading, setIsVisibleLoading] = useState(false);
 
-    const register = () => {
+    const register = async () => {
+        setIsVisibleLoading(true);
         if (!email || !password || !repeatPass) {
-            console.log("Todos los campos son obligatorios");
+            toastRef.current.show("Todos los campos son obligatorios");
         } else {
             if (!validateEmail(email)) {
-                console.log("el email no es correcto");
+                toastRef.current.show("El email no es correcto");
             } else {
                 if (password !== repeatPass) {
-                    console.log("Las cotraseñas no son iguales");
-                } else {
-                    console.log("correcto");
-                }
+                    toastRef.current.show("Las cotraseñas no son iguales");
 
+                } else {
+                    await firebase.auth().createUserWithEmailAndPassword(email, password)
+                        .then(() => {
+                            navigation.navigate("MyAccount");
+                        })
+                        .catch(() => {
+                            toastRef.current.show("Error al crear la cuenta");
+                        })
+                }
             }
         }
+        setIsVisibleLoading(false);
+    };
 
-
-
-
-    }
     return (
         <View style={styles.formContainer} behavior="padding" enabled>
             <Input
@@ -45,7 +55,6 @@ export default function RegisterForm() {
                     />
                 }
             />
-
             <Input
                 placeholder="Contraseña"
                 password={true}
@@ -63,7 +72,6 @@ export default function RegisterForm() {
 
                 }
             />
-
             <Input
                 placeholder="Repetir Contraseña"
                 password={true}
@@ -75,18 +83,19 @@ export default function RegisterForm() {
                         type="material-community"
                         name={hidePassRepeat ? "eye-outline" : "eye-off-outline"}
                         iconStyle={styles.iconRight}
-                        onPress={() => setHidePassRepeat(hidePassRepeat)}
+                        onPress={() => setHidePassRepeat(!hidePassRepeat)}
                     />
                 }
             />
-
-
-
             <Button
                 title='Unirse'
                 containerStyle={styles.btnContainerRegister}
                 buttonStyle={styles.btnRegister}
                 onPress={register}
+            />
+            <Loading
+                isVisible={isVisibleLoading}
+                text="Creando cuenta"
             />
         </View>
     );
