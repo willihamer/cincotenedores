@@ -52,18 +52,14 @@ const StackAccount = createStackNavigator();
 
 function AccountStack() {
     return (
-
         <StackAccount.Navigator>
             <StackAccount.Screen name="UserGuest" component={UserGuest}/>
             <StackAccount.Screen name="Mi cuenta" component={MyAccountScreen} />
             <StackAccount.Screen name="Login" component={LoginScreen} />
             <StackAccount.Screen name="Registro" component={Register} />
         </StackAccount.Navigator>
-
     )
 }
-
-
 
 export default function Navigation() {
     return (

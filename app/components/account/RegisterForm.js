@@ -17,7 +17,7 @@ export default function RegisterForm(props, {navigation}) {
     const [isVisibleLoading, setIsVisibleLoading] = useState(false);
 
     const register = async () => {
-        setIsVisibleLoading(true);
+        // setIsVisibleLoading(true);
         if (!email || !password || !repeatPass) {
             toastRef.current.show("Todos los campos son obligatorios");
         } else {
