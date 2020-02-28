@@ -1,53 +1,63 @@
 import * as React from 'react'
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from "react-native-vector-icons";
 
 import RestaurantsScreen from "../screens/Restaurants";
 import TopRestaurantsScreen from "../screens/TopRestaurants";
 import SearchScreen from "../screens/Search";
 import MyAccountScreen from "../screens/account/MyAccount";
-import Login from '../screens/account/Login';
+import LoginScreen from '../screens/account/Login';
 import Register from '../screens/account/Register';
+import UserGuest from '../screens/account/UserGuest';
 
 
 
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
+const StackRestaurant = createStackNavigator();
 
 function RestaurantsStack() {
     return (
-        <Stack.Navigator>
-            <Stack.Screen name="Restaurantes" component={RestaurantsScreen} />
-            <Stack.Screen name="Restaurante" component={RestaurantsScreen} />
-        </Stack.Navigator>
+        <StackRestaurant.Navigator>
+            <StackRestaurant.Screen name="Restaurantes" component={RestaurantsScreen} />
+            <StackRestaurant.Screen name="Restaurante" component={RestaurantsScreen} />
+        </StackRestaurant.Navigator>
     )
 }
+
+const StackTopRestaurants = createStackNavigator();
 
 function TopRestaurantsStack() {
     return (
-        <Stack.Navigator>
-            <Stack.Screen name="Top 5" component={TopRestaurantsScreen} />
-        </Stack.Navigator>
+        <StackTopRestaurants.Navigator>
+            <StackTopRestaurants.Screen name="Top 5" component={TopRestaurantsScreen} />
+        </StackTopRestaurants.Navigator>
     )
 }
+
+
+const StackSearch = createStackNavigator();
 
 function SearchStack() {
     return (
-        <Stack.Navigator>
-            <Stack.Screen name="Buscar" component={SearchScreen} />
-        </Stack.Navigator>
+        <StackSearch.Navigator>
+            <StackSearch.Screen name="Buscar" component={SearchScreen} />
+        </StackSearch.Navigator>
     )
 }
 
+const StackAccount = createStackNavigator();
+
+
 function AccountStack() {
     return (
-        <Stack.Navigator>
-            <Stack.Screen name="Mi cuenta" component={MyAccountScreen} />
-            <Stack.Screen name="Login" component={Login} />
-            <Stack.Screen name="Registro" component={Register} />
-        </Stack.Navigator>
+        <StackAccount.Navigator>
+            <StackAccount.Screen name="UserGuest" component={UserGuest}/>
+            <StackAccount.Screen name="Mi cuenta" component={MyAccountScreen} />
+            <StackAccount.Screen name="Login" component={LoginScreen} />
+            <StackAccount.Screen name="Registro" component={Register} />
+        </StackAccount.Navigator>
     )
 }
 
@@ -93,9 +103,3 @@ export default function Navigation() {
         </NavigationContainer>
     )
 }
-
-
-
-
-
-

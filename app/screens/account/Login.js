@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { StyleSheet, View, ScrollView, Text, Image } from "react-native";
 import { Divider } from "react-native-elements";
 // import { withNavigation } from "react-navigation";
@@ -35,7 +35,7 @@ function CreateAccount(props) {
             Aún no tienes una cuenta?{" "}
             <Text
                 style={styles.btnRegister}
-                onPress={() => navigation.navigate("Register")}
+                onPress={() => navigation.navigate("Registro")}
             >
                 Regístrate
             </Text>
