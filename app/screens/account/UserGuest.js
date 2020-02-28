@@ -1,7 +1,7 @@
-import React from 'react'
+import * as React from 'react'
 import { StyleSheet, View, Text, ScrollView, Image } from "react-native";
 import { Button } from "react-native-elements";
-// import { withNavigation } from "react-navigation";
+
 
 
 function UserGuest({ navigation }) {
@@ -26,7 +26,7 @@ function UserGuest({ navigation }) {
                     buttonStyle={styles.btnStyle}
                     containerStyle={styles.btnContainer}
                     title="Ver tu perfil"
-                    onPress={() => navigation.navigate("Login")}
+                    onPress={() => navigation.navigate('Login')}
                 />
             </View>
         </ScrollView>

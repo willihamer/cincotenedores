@@ -1,7 +1,5 @@
-import React from 'react';
-import { Text, View } from 'react-native';
+import * as React from 'react';
 import Navigation from "./app/navigations/Navigation";
-import { firebaseApp } from "./app/utils/FireBase";
 
 
 
