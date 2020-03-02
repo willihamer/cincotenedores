@@ -13,15 +13,14 @@ import Register from '../screens/account/Register';
 import UserGuest from '../screens/account/UserGuest';
 
 
-
 const Tab = createBottomTabNavigator();
 const StackRestaurant = createStackNavigator();
 
 function RestaurantsStack() {
     return (
         <StackRestaurant.Navigator>
-            <StackRestaurant.Screen name="Restaurantes" component={RestaurantsScreen} />
-            <StackRestaurant.Screen name="Restaurante" component={RestaurantsScreen} />
+            <StackRestaurant.Screen name="Restaurantes" component={RestaurantsScreen}  options={{ title: 'Restaurantes' }} />
+            <StackRestaurant.Screen name="Restaurante" component={RestaurantsScreen}  options={{ title: 'Restaurante' }}/>
         </StackRestaurant.Navigator>
     )
 }
@@ -31,7 +30,7 @@ const StackTopRestaurants = createStackNavigator();
 function TopRestaurantsStack() {
     return (
         <StackTopRestaurants.Navigator>
-            <StackTopRestaurants.Screen name="Top 5" component={TopRestaurantsScreen} />
+            <StackTopRestaurants.Screen name="Top 5" component={TopRestaurantsScreen} options={{ title: 'Restaurantes top 5' }}/>
         </StackTopRestaurants.Navigator>
     )
 }
@@ -42,7 +41,7 @@ const StackSearch = createStackNavigator();
 function SearchStack() {
     return (
         <StackSearch.Navigator>
-            <StackSearch.Screen name="Buscar" component={SearchScreen} />
+            <StackSearch.Screen name="Buscar" component={SearchScreen} options={{ title: 'Buscar' }}/>
         </StackSearch.Navigator>
     )
 }
@@ -53,10 +52,10 @@ const StackAccount = createStackNavigator();
 function AccountStack() {
     return (
         <StackAccount.Navigator>
-            <StackAccount.Screen name="UserGuest" component={UserGuest}/>
-            <StackAccount.Screen name="Mi cuenta" component={MyAccountScreen} />
-            <StackAccount.Screen name="Login" component={LoginScreen} />
-            <StackAccount.Screen name="Registro" component={Register} />
+            <StackAccount.Screen name="UserGuest" component={UserGuest} options={{ title: 'Cuenta' }}/>
+            <StackAccount.Screen name="MyAccount" component={MyAccountScreen} options={{ title: 'Mi cuenta' }} />
+            <StackAccount.Screen name="Login" component={LoginScreen} options={{ title: 'Ingresar' }} />
+            <StackAccount.Screen name="Registro" component={Register} options={{ title: 'Registrar' }} />
         </StackAccount.Navigator>
     )
 }

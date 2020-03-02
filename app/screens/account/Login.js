@@ -4,7 +4,6 @@ import { Divider } from "react-native-elements";
 // import { withNavigation } from "react-navigation";
 
 export default function Login({ navigation }) {
-
     return (
         <ScrollView>
             <Image

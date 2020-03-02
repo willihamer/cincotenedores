@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState } from 'react';
 import { StyleSheet, View } from "react-native";
 import { Input, Icon, Button } from "react-native-elements";
 import { validateEmail } from '../../utils/Validation';
 import * as firebase from 'firebase';
 import Loading from '../../components/Loading';
 
-export default function RegisterForm(props, {navigation}) {
-
-    const { toastRef } = props;
+export default function RegisterForm({toastRef, navigation}) {
 
     const [hidePass, setHidePass] = useState(true);
     const [hidePassRepeat, setHidePassRepeat] = useState(true);
@@ -17,7 +16,7 @@ export default function RegisterForm(props, {navigation}) {
     const [isVisibleLoading, setIsVisibleLoading] = useState(false);
 
     const register = async () => {
-        // setIsVisibleLoading(true);
+        setIsVisibleLoading(true);
         if (!email || !password || !repeatPass) {
             toastRef.current.show("Todos los campos son obligatorios");
         } else {
@@ -28,12 +27,15 @@ export default function RegisterForm(props, {navigation}) {
                     toastRef.current.show("Las cotraseñas no son iguales");
 
                 } else {
+                    console.log('email: ' + email);
+                    console.log('password: ' + password);
+
                     await firebase.auth().createUserWithEmailAndPassword(email, password)
                         .then(() => {
                             navigation.navigate("MyAccount");
                         })
-                        .catch(() => {
-                            toastRef.current.show("Error al crear la cuenta");
+                        .catch((err) => {
+                            toastRef.current.show("Error al crear la cuenta: " + err);
                         })
                 }
             }
