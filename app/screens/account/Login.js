@@ -17,13 +17,13 @@ export default function Login({ navigation }) {
             />
             <View
                 style={styles.viewContainer}>
-                <LoginForm toastRef={toastRef, navigation} />
-                
+                <LoginForm toastRef={toastRef} navigation={navigation} />
+
                 <CreateAccount navigation={navigation} />
             </View>
             <Divider style={styles.divider} />
             <View style={styles.viewContainer}>
-                <LoginFacebook/>
+                <LoginFacebook />
             </View>
             <Toast ref={toastRef} position="center" opacity={0.5} />
         </ScrollView>

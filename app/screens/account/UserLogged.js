@@ -4,7 +4,7 @@ import { Button } from 'react-native-elements';
 import * as firebase from 'firebase';
 
 
-export default function UserLogged() {
+export default function UserLogged({navigation}) {
     return (
         <View>
             <Text>User Logged</Text>

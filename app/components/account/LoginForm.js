@@ -80,7 +80,7 @@ export default function LoginForm({ toastRef, navigation }) {
 const styles = StyleSheet.create({
     formContainer: {
         flex: 1,
-        alignItems: 'cebter',
+        alignItems: 'center',
         marginTop: 30,
     },
     inputForm: {

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import * as firebase from "firebase";
 import Loading from "../../components/Loading";
-import UserGuest from './UserGuest'; 
-import UserLogged from './UserLogged'; 
+import UserGuest from './UserGuest';
+import UserLogged from './UserLogged';
 
-export default function MyAccount() {
+export default function MyAccount({ navigation }) {
     const [login, setLogin] = useState(null);
 
     useEffect(() => {
@@ -20,7 +20,7 @@ export default function MyAccount() {
         );
     }
 
-    return login ? <UserLogged/> : <UserGuest/>;
+    return login ? <UserLogged navigation={navigation} /> : <UserGuest navigation={navigation} />;
 
 
 

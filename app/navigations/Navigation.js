@@ -51,7 +51,7 @@ const StackAccount = createStackNavigator();
 
 function AccountStack() {
     return (
-        <StackAccount.Navigator>
+        <StackAccount.Navigator >
             <StackAccount.Screen name="MyAccount" component={MyAccountScreen} options={{ title: 'Mi cuenta' }} />
             <StackAccount.Screen name="UserGuest" component={UserGuest} options={{ title: 'Cuenta' }}/>
             <StackAccount.Screen name="Login" component={LoginScreen} options={{ title: 'Ingresar' }} />

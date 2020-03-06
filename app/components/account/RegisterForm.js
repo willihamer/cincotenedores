@@ -6,7 +6,7 @@ import { validateEmail } from '../../utils/Validation';
 import * as firebase from 'firebase';
 import Loading from '../../components/Loading';
 
-export default function RegisterForm({toastRef, navigation}) {
+export default function RegisterForm({ toastRef, navigation }) {
 
     const [hidePass, setHidePass] = useState(true);
     const [hidePassRepeat, setHidePassRepeat] = useState(true);
