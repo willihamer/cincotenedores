@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { useState, Fragment } from 'react';
 import { SocialIcon } from "react-native-elements";
 import * as firebase from 'firebase';
 import * as facebook from 'expo-facebook';

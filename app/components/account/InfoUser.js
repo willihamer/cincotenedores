@@ -1,12 +1,11 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Avatar } from 'react-native-elements';
-import iconavatar from '../../../assets/img/ironman.jpg';
 import * as firebase from 'firebase';
 import * as Permissions from 'expo-permissions';
 import * as ImagePicker from 'expo-image-picker'
 
-export default function InfoUser({ userInfo }) {
+export default function InfoUser({ userInfo, setReloadData, toastRef, setTextLoading, setIsLoading }) {
 
     const { photoURL, uid, displayName, email } = userInfo;
 
@@ -15,7 +14,7 @@ export default function InfoUser({ userInfo }) {
         const resultPermCamera = resultPermision.permissions.cameraRoll.status;
 
         if (resultPermCamera === "denied") {
-            // es necesario aceptar los permisos de la galeria.
+            toastRef.current.show("Es necesario aceptar los permisos de la galeria.")
         }
         else {
             const result = await ImagePicker.launchImageLibraryAsync({
@@ -24,17 +23,51 @@ export default function InfoUser({ userInfo }) {
             });
 
             if (result.cancelled) {
-                console.log("Has cerrado la galería de imagenes");
+                toastRef.current.show("Has cerrado la galería de imagenes")
             } else {
-                uploadImage(result.uri, uid); 
+                uploadImage(result.uri, uid).then(() => {
+                    updatePhotoUrl(uid);
+                });
             }
         }
 
     }
 
-    const uploadImage = (uri, nameImage) => {
+    const uploadImage = async (uri, nameImage) => {
+        setTextLoading('Actualizando Avatar');
+        setIsLoading(true);
 
+        const response = await fetch(uri);
+        const blob = await response.blob();
+        const ref = firebase.storage().ref().child(`/avatar/${nameImage}`);
+        return ref.put(blob);
     }
+
+    const updatePhotoUrl = (uid) => {
+        firebase.storage().ref(`avatar/${uid}`)
+            .getDownloadURL().then(async result => {
+                const update = {
+                    photoURL: result
+                }
+                await firebase.auth().currentUser.updateProfile(update);
+                setReloadData(true);
+                setIsLoading(false);
+            }).catch(() => {
+                toastRef.current.show("error al recuperar el avatar en el servidor");
+            });
+    }
+
+    // const imageDefault = () => {
+    //     firebase.storage().ref('default/ironman').getDownloadURL().then(async result => {
+    //         const update = {
+    //             photoURL: result
+    //         }
+    //         await firebase.auth().currentUser.updateProfile(update);
+    //         setReloadData(true);
+    //     }).catch(() =>{
+    //         console.log('la cagates');
+    //     })
+    // }
 
     return (
         <View style={styles.viewUserInfo}>
@@ -45,7 +78,7 @@ export default function InfoUser({ userInfo }) {
                 onEditPress={changeAvatar}
                 containerStyle={styles.userInfoAvatar}
                 source={{
-                    uri: photoURL ? photoURL : iconavatar
+                    uri: photoURL ? photoURL : 'https://img.zi.com/images/2017/3/4/upload/d1e72007-955d-402b-8fb0-19d4c2f5c599.jpg'
                 }}
             />
             <View>
