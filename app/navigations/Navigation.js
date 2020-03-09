@@ -11,7 +11,7 @@ import MyAccountScreen from "../screens/account/MyAccount";
 import LoginScreen from '../screens/account/Login';
 import Register from '../screens/account/Register';
 import UserGuest from '../screens/account/UserGuest';
-
+import AddRestaurantScreen from '../screens/Restaurants/AddRestaurant';
 
 const Tab = createBottomTabNavigator();
 const StackRestaurant = createStackNavigator();
@@ -20,7 +20,7 @@ function RestaurantsStack() {
     return (
         <StackRestaurant.Navigator>
             <StackRestaurant.Screen name="Restaurantes" component={RestaurantsScreen}  options={{ title: 'Restaurantes' }} />
-            <StackRestaurant.Screen name="Restaurante" component={RestaurantsScreen}  options={{ title: 'Restaurante' }}/>
+            <StackRestaurant.Screen name="addRestaurant" component={AddRestaurantScreen}  options={{ title: 'Agregar restaurante' }}/>
         </StackRestaurant.Navigator>
     )
 }
