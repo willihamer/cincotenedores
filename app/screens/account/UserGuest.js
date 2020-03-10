@@ -6,8 +6,6 @@ import { Button } from "react-native-elements";
 
 function UserGuest({ navigation }) {
 
-    // const { navigation } = props;
-
     return (
         <ScrollView style={styles.viewBody} centerContent={true}>
             <Image

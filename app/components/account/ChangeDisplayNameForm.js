@@ -61,7 +61,7 @@ export default function ChangeDisplayNameForm({ displayName, setIsVisibleModal, 
 
 const styles = StyleSheet.create({
     view: {
-        alignItems: center,
+        alignItems: "center",
         paddingTop: 10,
         paddingBottom: 10
     },
