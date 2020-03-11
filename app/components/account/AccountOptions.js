@@ -23,7 +23,7 @@ export default function AccountOptions({ userInfo, setReloadData, toastRef }) {
         {
             title: "Cambiar email",
             iconType: "Material-community",
-            iconNameLeft: "at",
+            iconNameLeft: "email",
             iconColorLeft: "#ccc",
             iconNameRight: "chevron-right",
             iconColorRight: "#ccc",
@@ -32,7 +32,7 @@ export default function AccountOptions({ userInfo, setReloadData, toastRef }) {
         {
             title: "Cambiar contraseña",
             iconType: "Material-community",
-            iconNameLeft: "lock-reset",
+            iconNameLeft: "lock-outline",
             iconColorLeft: "#ccc",
             iconNameRight: "chevron-right",
             iconColorRight: "#ccc",

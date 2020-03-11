@@ -23,6 +23,7 @@ export default function AddRestaurantForm({ navigation, toastRef, setIsLoading }
 function UploadImage({ imagesSelected, setImagesSelected, toastRef }) {
 
     const imageSelect = async () => {
+        console.log("im here");
         const resultPermission = await Permissions.askAsync(Permissions.CAMERA_ROLL);
 
         const resultPermissionCamera = resultPermission.permissions.cameraRoll.status;
@@ -50,7 +51,7 @@ function UploadImage({ imagesSelected, setImagesSelected, toastRef }) {
                 name="camera"
                 color="#7a7a7a"
                 containerStyle={styles.containerIcon}
-                onPress={() => imageSelect}
+                onPress={() => imageSelect()}
             />
             <Avatar
                 onPress={() => console.log("eliminar")}
