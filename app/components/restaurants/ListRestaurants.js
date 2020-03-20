@@ -1,15 +1,15 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 
 
-const ListRestaurants = () => {
-    return ( 
+const ListRestaurants = ({ restaurants }) => {
+    return (
         <View>
             <Text>
                 lista
             </Text>
         </View>
-     );
+    );
 }
- 
+
 export default ListRestaurants;
